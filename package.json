@@ -1,0 +1,44 @@
+{
+  "name": "camera-lab",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc -b --pretty false",
+    "lint": "eslint .",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "test:e2e": "playwright test",
+    "verify": "npm run lint && npm run typecheck && npm run test:run && npm run build"
+  },
+  "dependencies": {
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "three": "^0.180.0",
+    "@react-three/fiber": "^9.5.0",
+    "@react-three/drei": "^10.7.0",
+    "@react-three/postprocessing": "^3.0.4",
+    "zustand": "^5.0.10",
+    "i18next": "^25.6.2",
+    "react-i18next": "^16.4.2",
+    "vite-plugin-pwa": "^1.2.0"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.1",
+    "@testing-library/user-event": "^14.6.3",
+    "@playwright/test": "^1.57.0",
+    "@types/node": "^24.13.3",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.4",
+    "eslint": "^9.38.0",
+    "jsdom": "^27.3.0",
+    "typescript": "~5.9.3",
+    "vite": "^8.2.0",
+    "vitest": "^4.1.7"
+  }
+}
