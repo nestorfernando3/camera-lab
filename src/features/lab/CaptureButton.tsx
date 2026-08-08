@@ -1,24 +1,14 @@
 import { useLabStore } from "./labStore";
+import { useShutterSound } from "../../shared/hooks/useShutterSound";
+import { useProgressStore } from "../progress/progressStore";
 
 export function CaptureButton() {
   const capture = useLabStore((s) => s.capture);
+  const soundEnabled = useProgressStore((s) => s.soundEnabled);
+  const play = useShutterSound(soundEnabled);
   return (
-    <button
-      onClick={capture}
-      aria-label="Tomar foto"
-      data-testid="capture-button"
-      style={{
-        padding: "12px 20px",
-        background: "var(--accent)",
-        color: "#111",
-        border: "none",
-        borderRadius: "6px",
-        fontWeight: 700,
-        cursor: "pointer",
-        fontSize: "16px",
-      }}
-    >
-      ● Capturar
+    <button onClick={() => { play(); capture(); }} aria-label="Tomar foto" data-testid="capture-button" className="capture-btn">
+      <span style={{ width: 10, height: 10, borderRadius: "50%", background: "currentColor", display: "inline-block" }} /> Capturar
     </button>
   );
 }
