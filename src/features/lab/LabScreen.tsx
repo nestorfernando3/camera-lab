@@ -7,6 +7,8 @@ import { CaptureButton } from "./CaptureButton";
 import { MissionPanel } from "./MissionPanel";
 import { useProgressStore } from "../progress/progressStore";
 import { evaluateMission } from "../../domain/learning/evaluateMission";
+import { ComparisonTray } from "./ComparisonTray";
+import { HintPanel } from "./HintPanel";
 
 export function LabScreen({ missionId }: { missionId: string }) {
   const { setMission, settings, phase, captures } = useLabStore();
@@ -64,6 +66,15 @@ export function LabScreen({ missionId }: { missionId: string }) {
             <h4 style={{ margin: "0 0 6px", fontSize: 12 }}>¿Qué hace la obturación?</h4>
             <p className="muted" style={{ fontSize: 12, margin: 0 }}>Tiempo que el sensor ve movimiento. <strong>1/30</strong> = arrastra, <strong>1/1000</strong> = congela. Mueve y captura para ver.</p>
           </div>
+          {mission.maxVisibleCaptures > 1 && captures.length > 0 && (
+            <ComparisonTray captures={captures} maxVisible={mission.maxVisibleCaptures} />
+          )}
+          <details className="panel" style={{ padding: 0 }}>
+            <summary style={{ padding: 12, cursor: "pointer", fontSize: 12, fontWeight: 700, listStyle: "none" }}>💡 ¿Pista? (opcional)</summary>
+            <div style={{ padding: "0 12px 12px" }}>
+              <HintPanel mission={mission} />
+            </div>
+          </details>
         </div>
       </div>
     </div>
